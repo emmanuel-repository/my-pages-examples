@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    body {
+      width: 100vw;
+      height: 100vh;
+      background-color: rgb(26, 27, 39);
+      font-family: helvetica;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+
+    #conteudo {
+      background-color: rgb(36, 33, 51);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 15px 15px 15px rgba(0, 0, 0, .2);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 95%;
+      max-width: 400px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      margin: 0 15px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .desfazer::after {
+      content: "desfazer ✖";
+      font-size: 9px;
+      color: red;
+      border: 1px solid red;
+      padding: 3px 5px;
+      border-radius: 100px;
+      position: relative;
+      top: -5px;
+      cursor: pointer;
+      transition: all .8s;
+    }
+
+    .desfazer:hover::after {
+      background-color: red;
+      color: #fff;
+    }
+
+    .desfazer:active,
+    #adicionar>button:active,
+    p.excluirItem:active {
+      transform: scale(.95);
+    }
+
+    #adicionar {
+      width: 100%;
+      background-color: rgba(255, 255, 255, .2);
+      border-radius: 100px;
+      padding: 5px;
+      display: flex;
+      gap: 5px;
+    }
+
+    #adicionar>input {
+      width: 100%;
+      background-color: transparent;
+      border: 0;
+      outline: 0;
+      padding: 0 10px;
+      color: #fff;
+    }
+
+    #adicionar>button {
+      border-radius: 100px;
+      border: 0;
+      background-color: rgba(255, 255, 255, .5);
+      color: rgb(36, 33, 51);
+      font-weight: 600;
+      padding: 3px 7px;
+      transition: background-color .8s;
+      cursor: pointer;
+    }
+
+    #adicionar>button:hover {
+      background-color: #fff;
+    }
+
+    #lista {
+      margin: 0 15px;
+    }
+
+    #lista>div.fazer>p.textoItem::before {
+      content: "";
+      border: 1px solid #fff;
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      border-radius: 3px;
+      margin-right: 10px;
+      position: relative;
+      top: 3px;
+    }
+
+    #lista>div.feito>p.textoItem::before {
+      content: "✔";
+      border: 1px solid yellowgreen;
+      background-color: yellowgreen;
+      display: inline-block;
+      padding: 3px 4px;
+      max-width: 15px;
+      max-height: 15px;
+      border-radius: 3px;
+      margin-right: 10px;
+      position: relative;
+      top: -3px;
+      font-size: 8.75px;
+      line-height: 1;
+    }
+
+    p.excluirItem::before {
+      content: "✖";
+      cursor: pointer;
+      transition: all .5s;
+    }
+
+    #lista>div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    p.excluirItem:hover::before {
+      color: red;
+    }
+
+    #vazio {
+      opacity: 0.5;
+    }
+
+    #lista>div:not(:last-child) {
+      border-bottom: 1px solid rgba(255, 255, 255, .2);
+    }
+
+    #lista>div>p.textoItem {
+      cursor: pointer;
+      line-height: 1.5;
+      margin: 8px 0;
+      width: 90%;
+    }
+
+    #lista>div.feito>p {
+      animation-name: fadeOut;
+      animation-duration: .5s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: 1;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: .5;
+      }
+    }
+
+    #lista>div.feito>p::before {
+      animation-name: pula;
+      animation-duration: .25s;
+      animation-timing-function: ease-in-out;
+    }
+
+    @keyframes pula {
+      0% {
+        transform: scale(1);
+      }
+
+      25% {
+        transform: scale(.9);
+      }
+
+      75% {
+        transform: scale(1.1);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    #lista>div.fazer {
+      animation-name: aparece;
+      animation-duration: 1s;
+      animation-timing-function: ease;
+    }
+
+    @keyframes aparece {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div id="conteudo">
+    <h1>Minha lista <span class="desfazer"></span></h1>
+    <div id="lista">
+      <p id="vazio">Nenhum item</p>
+    </div>
+    <div id="adicionar">
+      <input type="text" name="novo" id="novo" placeholder="Adicionar..." autofocus>
+      <button id="botao">+</button>
+    </div>
+  </div>
+
+  <script>
+    // Selección de elementos
+    const botao = document.getElementById("botao");
+    const inputItem = document.getElementById("novo");
+    const lista = document.getElementById("lista");
+    const desfazer = document.querySelector(".desfazer");
+
+    // Event Listeners
+    botao.addEventListener("click", addItem);
+    inputItem.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        addItem();
+      }
+    });
+
+    desfazer.addEventListener("click", () => {
+      lista.innerHTML = ""; // Limpia la lista
+      mostrarMensagemVazia();
+    });
+
+    // Función para agregar un nuevo ítem
+    function addItem() {
+      if (inputItem.value.trim() !== "") {
+        const novoItem = document.createElement("div");
+        novoItem.className = "fazer";
+
+        const textoItem = document.createElement("p");
+        textoItem.className = "textoItem";
+        textoItem.textContent = inputItem.value;
+        textoItem.addEventListener("click", toggleEstadoItem);
+
+        const excluirItem = document.createElement("p");
+        excluirItem.className = "excluirItem";
+        excluirItem.textContent = "Excluir"; // Puedes cambiar el texto o añadir un ícono aquí
+        excluirItem.addEventListener("click", excluirItemLista);
+
+        novoItem.appendChild(textoItem);
+        novoItem.appendChild(excluirItem);
+        lista.appendChild(novoItem);
+
+        inputItem.value = ""; // Limpiar el input
+        mostrarMensagemVazia();
+      }
+      inputItem.focus(); // Regresar el foco al input
+    }
+
+    // Función para mostrar o quitar el mensaje "Nenhum item"
+    function mostrarMensagemVazia() {
+      const vazio = document.getElementById("vazio");
+      const tieneItems = lista.querySelector("div");
+
+      if (tieneItems && vazio) {
+        vazio.remove(); // Quita el mensaje si hay ítems
+      } else if (!tieneItems && !vazio) {
+        const novoP = document.createElement("p");
+        novoP.id = "vazio";
+        novoP.textContent = "Nenhum item"; // Mensaje cuando no hay ítems
+        lista.appendChild(novoP);
+      }
+    }
+
+    // Función para excluir un ítem de la lista
+    function excluirItemLista(event) {
+      event.target.parentElement.remove();
+      mostrarMensagemVazia();
+    }
+
+    // Función para alternar entre "feito" y "fazer"
+    function toggleEstadoItem(event) {
+      const item = event.target.parentElement;
+      item.className = item.className === "feito" ? "fazer" : "feito";
+    }
+  </script>
+
+</body>
+
+</html>
