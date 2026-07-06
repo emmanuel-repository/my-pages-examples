@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ejercicios comunes de pruebas técnicas</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    margin: 0;
+    padding: 2rem;
+    line-height: 1.5;
+  }
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0.25rem;
+  }
+  p.subtitle {
+    color: #94a3b8;
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+  h2 {
+    font-size: 1.1rem;
+    color: #38bdf8;
+    border-bottom: 1px solid #1e293b;
+    padding-bottom: 0.4rem;
+    margin-top: 2.5rem;
+  }
+  .ejercicio {
+    background: #111827;
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .ejercicio h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    color: #f1f5f9;
+  }
+  .ejercicio button {
+    background: #0ea5e9;
+    color: #fff;
+    border: none;
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    margin-bottom: 0.6rem;
+  }
+  .ejercicio button:hover {
+    background: #0284c7;
+  }
+  pre.output {
+    background: #020617;
+    border: 1px solid #1e293b;
+    border-radius: 6px;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+    color: #86efac;
+    white-space: pre-wrap;
+    word-break: break-word;
+    min-height: 1.5rem;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+<h1>Ejercicios comunes de pruebas técnicas</h1>
+<p class="subtitle">Haz clic en "Ejecutar" en cada tarjeta para ver el resultado. El código de cada función también está visible abajo de cada botón.</p>
+
+<h2>1. Strings</h2>
+
+<div class="ejercicio">
+  <h3>Palíndromo</h3>
+  <button onclick="run('palindromo')">Ejecutar</button>
+  <pre class="output" id="out-palindromo"></pre>
+</div>
+
+<div class="ejercicio">
+  <h3>Contar caracteres repetidos</h3>
+  <button onclick="run('contarCaracteres')">Ejecutar</button>
+  <pre class="output" id="out-contarCaracteres"></pre>
+</div>
+
+<div class="ejercicio">
+  <h3>Invertir string (sin .reverse())</h3>
+  <button onclick="run('invertirString')">Ejecutar</button>
+  <pre class="output" id="out-invertirString"></pre>
+</div>
+
+<div class="ejercicio">
+  <h3>Anagramas</h3>
+  <button onclick="run('anagramas')">Ejecutar</button>
+  <pre class="output" id="out-anagramas"></pre>
+</div>
+
+<div class="ejercicio">
+  <h3>FizzBuzz</h3>
+  <button onclick="run('fizzBuzz')">Ejecutar</button>
+  <pre class="output" id="out-fizzBuzz"></pre>
+</div>
+
+<h2>2. Arrays</h2>
+
+<div class="ejercicio">
+  <h3>Máximo sin Math.max()</h3>
+  <button onclick="run('maximo')">Ejecutar</button>
+  <pre class="output" id="out-maximo"></pre>
+</div>
+
+<div class="ejercicio">
+  <h3>Eliminar duplicados</h3>
+  <button onclick="run('eliminarDuplicados')">Ejecutar</button>
+  <pre class="output" id="out-eliminarDuplicados"></pre>
+</div>
+
+<div class="ejercicio">
+  <h3>Bubble sort</h3>
+  <button onclick="run('bubbleSort')">Ejecutar</button>
+  <pre class="output" id="out-bubbleSort"></pre>
+</div>
+
+<div class="ejercicio">
+  <h3>Two Sum</h3>
+  <button onclick="run('twoSum')">Ejecutar</button>
+  <pre class="output" id="out-twoSum"></pre>
+</div>
+
+<div class="ejercicio">
+  <h3>Flatten (aplanar array anidado)</h3>
+  <button onclick="run('flatten')">Ejecutar</button>
+  <pre class="output" id="out-flatten"></pre>
+</div>
+
+<div class="ejercicio">
+  <h3>Agrupar por propiedad (groupBy)</h3>
+  <button onclick="run('groupBy')">Ejecutar</button>
+  <pre class="output" id="out-groupBy"></pre>
+</div>
+
+<h2>3. Lógica / matemáticas</h2>
+
+<div class="ejercicio">
+  <h3>Fibonacci (iterativo y recursivo)</h3>
+  <button onclick="run('fibonacci')">Ejecutar</button>
+  <pre class="output" id="out-fibonacci"></pre>
+</div>
+
+<div class="ejercicio">
+  <h3>Número primo / primeros N primos</h3>
+  <button onclick="run('primos')">Ejecutar</button>
+  <pre class="output" id="out-primos"></pre>
+</div>
+
+<div class="ejercicio">
+  <h3>Factorial</h3>
+  <button onclick="run('factorial')">Ejecutar</button>
+  <pre class="output" id="out-factorial"></pre>
+</div>
+
+<h2>4. Objetos / estructuras</h2>
+
+<div class="ejercicio">
+  <h3>Validador de email</h3>
+  <button onclick="run('email')">Ejecutar</button>
+  <pre class="output" id="out-email"></pre>
+</div>
+
+<div class="ejercicio">
+  <h3>Generador de contraseñas</h3>
+  <button onclick="run('password')">Ejecutar</button>
+  <pre class="output" id="out-password"></pre>
+</div>
+
+<div class="ejercicio">
+  <h3>Debounce / Throttle (demo con contador de clics)</h3>
+  <button onclick="run('debounceThrottle')">Ejecutar</button>
+  <pre class="output" id="out-debounceThrottle"></pre>
+</div>
+
+<div class="ejercicio">
+  <h3>map / filter / reduce propios</h3>
+  <button onclick="run('miMapFilterReduce')">Ejecutar</button>
+  <pre class="output" id="out-miMapFilterReduce"></pre>
+</div>
+
+<div class="ejercicio">
+  <h3>Deep clone</h3>
+  <button onclick="run('deepClone')">Ejecutar</button>
+  <pre class="output" id="out-deepClone"></pre>
+</div>
+
+<h2>5. Async / Promesas</h2>
+
+<div class="ejercicio">
+  <h3>Delay con Promise (async/await)</h3>
+  <button onclick="run('delayPromise')">Ejecutar</button>
+  <pre class="output" id="out-delayPromise"></pre>
+</div>
+
+<div class="ejercicio">
+  <h3>Mi propio Promise.all</h3>
+  <button onclick="run('miPromiseAll')">Ejecutar</button>
+  <pre class="output" id="out-miPromiseAll"></pre>
+</div>
+
+<h2>6. Estructuras de datos</h2>
+
+<div class="ejercicio">
+  <h3>Pila (Stack) y Cola (Queue)</h3>
+  <button onclick="run('pilaCola')">Ejecutar</button>
+  <pre class="output" id="out-pilaCola"></pre>
+</div>
+
+<div class="ejercicio">
+  <h3>Búsqueda binaria</h3>
+  <button onclick="run('busquedaBinaria')">Ejecutar</button>
+  <pre class="output" id="out-busquedaBinaria"></pre>
+</div>
+
+<div class="ejercicio">
+  <h3>Lista enlazada</h3>
+  <button onclick="run('listaEnlazada')">Ejecutar</button>
+  <pre class="output" id="out-listaEnlazada"></pre>
+</div>
+
+<script>
+function print(id, ...args) {
+  const el = document.getElementById('out-' + id);
+  const linea = args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' ');
+  el.textContent += (el.textContent ? '\n' : '') + linea;
+}
+function clear(id) {
+  document.getElementById('out-' + id).textContent = '';
+}
+
+/* ---------- 1. Strings ---------- */
+
+function esPalindromo(str) {
+  const limpio = str.toLowerCase().replace(/[^a-z0-9ñ]/g, '');
+  return limpio === limpio.split('').reverse().join('');
+}
+
+function contarCaracteres(str) {
+  const conteo = {};
+  for (let char of str) conteo[char] = (conteo[char] || 0) + 1;
+  return conteo;
+}
+
+function invertirString(str) {
+  let resultado = '';
+  for (let i = str.length - 1; i >= 0; i--) resultado += str[i];
+  return resultado;
+}
+
+function sonAnagramas(a, b) {
+  const normalizar = str => str.toLowerCase().split('').sort().join('');
+  return normalizar(a) === normalizar(b);
+}
+
+function fizzBuzz(n) {
+  const lineas = [];
+  for (let i = 1; i <= n; i++) {
+    if (i % 15 === 0) lineas.push("FizzBuzz");
+    else if (i % 3 === 0) lineas.push("Fizz");
+    else if (i % 5 === 0) lineas.push("Buzz");
+    else lineas.push(i);
+  }
+  return lineas.join(', ');
+}
+
+/* ---------- 2. Arrays ---------- */
+
+function maximo(arr) {
+  let max = arr[0];
+  for (let n of arr) if (n > max) max = n;
+  return max;
+}
+
+function eliminarDuplicados(arr) {
+  return [...new Set(arr)];
+}
+
+function bubbleSort(arr) {
+  const copia = [...arr];
+  for (let i = 0; i < copia.length; i++) {
+    for (let j = 0; j < copia.length - i - 1; j++) {
+      if (copia[j] > copia[j + 1]) {
+        [copia[j], copia[j + 1]] = [copia[j + 1], copia[j]];
+      }
+    }
+  }
+  return copia;
+}
+
+function twoSum(arr, objetivo) {
+  const vistos = {};
+  for (let i = 0; i < arr.length; i++) {
+    const complemento = objetivo - arr[i];
+    if (vistos[complemento] !== undefined) return [vistos[complemento], i];
+    vistos[arr[i]] = i;
+  }
+  return null;
+}
+
+function flatten(arr) {
+  return arr.reduce((acc, val) =>
+    Array.isArray(val) ? acc.concat(flatten(val)) : acc.concat(val), []);
+}
+
+function groupBy(arr, prop) {
+  return arr.reduce((acc, item) => {
+    const key = item[prop];
+    if (!acc[key]) acc[key] = [];
+    acc[key].push(item);
+    return acc;
+  }, {});
+}
+
+/* ---------- 3. Lógica / matemáticas ---------- */
+
+function fibonacciIterativo(n) {
+  let [a, b] = [0, 1];
+  for (let i = 0; i < n; i++) [a, b] = [b, a + b];
+  return a;
+}
+
+function fibonacciRecursivo(n) {
+  if (n <= 1) return n;
+  return fibonacciRecursivo(n - 1) + fibonacciRecursivo(n - 2);
+}
+
+function esPrimo(n) {
+  if (n < 2) return false;
+  for (let i = 2; i <= Math.sqrt(n); i++) if (n % i === 0) return false;
+  return true;
+}
+
+function primerosPrimos(n) {
+  const primos = [];
+  let num = 2;
+  while (primos.length < n) {
+    if (esPrimo(num)) primos.push(num);
+    num++;
+  }
+  return primos;
+}
+
+function factorial(n) {
+  return n <= 1 ? 1 : n * factorial(n - 1);
+}
+
+/* ---------- 4. Objetos / estructuras ---------- */
+
+function esEmailValido(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+
+function createPassword(longitud, isMayus, withNum, withSimbolos) {
+  const minusculas = 'abcdefghijklmnñopqrstuvwxyz';
+  const mayusculas = minusculas.toUpperCase();
+  const numeros = '0123456789';
+  const simbolos = '!@$%)*(#+';
+  let pool = minusculas;
+  if (isMayus) pool += mayusculas;
+  if (withNum) pool += numeros;
+  if (withSimbolos) pool += simbolos;
+  let password = '';
+  for (let i = 0; i < longitud; i++) {
+    password += pool[Math.floor(Math.random() * pool.length)];
+  }
+  return password;
+}
+
+function debounce(fn, delay) {
+  let timeoutId;
+  return function (...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn.apply(this, args), delay);
+  };
+}
+
+function throttle(fn, limit) {
+  let enEspera = false;
+  return function (...args) {
+    if (!enEspera) {
+      fn.apply(this, args);
+      enEspera = true;
+      setTimeout(() => enEspera = false, limit);
+    }
+  };
+}
+
+function miMap(arr, callback) {
+  const resultado = [];
+  for (let i = 0; i < arr.length; i++) resultado.push(callback(arr[i], i, arr));
+  return resultado;
+}
+
+function miFilter(arr, callback) {
+  const resultado = [];
+  for (let i = 0; i < arr.length; i++) if (callback(arr[i], i, arr)) resultado.push(arr[i]);
+  return resultado;
+}
+
+function miReduce(arr, callback, inicial) {
+  let acumulador = inicial;
+  for (let i = 0; i < arr.length; i++) acumulador = callback(acumulador, arr[i], i, arr);
+  return acumulador;
+}
+
+function deepClone(obj) {
+  if (obj === null || typeof obj !== 'object') return obj;
+  if (Array.isArray(obj)) return obj.map(deepClone);
+  const clon = {};
+  for (let key in obj) clon[key] = deepClone(obj[key]);
+  return clon;
+}
+
+/* ---------- 5. Async / Promesas ---------- */
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function miPromiseAll(promesas) {
+  return new Promise((resolve, reject) => {
+    const resultados = [];
+    let completadas = 0;
+    if (promesas.length === 0) resolve(resultados);
+    promesas.forEach((promesa, index) => {
+      Promise.resolve(promesa)
+        .then(valor => {
+          resultados[index] = valor;
+          completadas++;
+          if (completadas === promesas.length) resolve(resultados);
+        })
+        .catch(reject);
+    });
+  });
+}
+
+/* ---------- 6. Estructuras de datos ---------- */
+
+class Pila {
+  constructor() { this.items = []; }
+  push(item) { this.items.push(item); }
+  pop() { return this.items.pop(); }
+  peek() { return this.items[this.items.length - 1]; }
+  estaVacia() { return this.items.length === 0; }
+}
+
+class Cola {
+  constructor() { this.items = []; }
+  enqueue(item) { this.items.push(item); }
+  dequeue() { return this.items.shift(); }
+  frente() { return this.items[0]; }
+  estaVacia() { return this.items.length === 0; }
+}
+
+function busquedaBinaria(arr, objetivo) {
+  let inicio = 0, fin = arr.length - 1;
+  while (inicio <= fin) {
+    const medio = Math.floor((inicio + fin) / 2);
+    if (arr[medio] === objetivo) return medio;
+    if (arr[medio] < objetivo) inicio = medio + 1;
+    else fin = medio - 1;
+  }
+  return -1;
+}
+
+class Nodo {
+  constructor(valor) { this.valor = valor; this.siguiente = null; }
+}
+class ListaEnlazada {
+  constructor() { this.cabeza = null; }
+  agregar(valor) {
+    const nodo = new Nodo(valor);
+    if (!this.cabeza) { this.cabeza = nodo; return; }
+    let actual = this.cabeza;
+    while (actual.siguiente) actual = actual.siguiente;
+    actual.siguiente = nodo;
+  }
+  recorrer() {
+    let actual = this.cabeza;
+    const valores = [];
+    while (actual) { valores.push(actual.valor); actual = actual.siguiente; }
+    return valores;
+  }
+}
+
+/* ---------- Runner: conecta cada botón con su demo ---------- */
+
+const demos = {
+  palindromo: id => {
+    print(id, 'esPalindromo("Anita lava la tina") →', esPalindromo("Anita lava la tina"));
+    print(id, 'esPalindromo("hola mundo") →', esPalindromo("hola mundo"));
+  },
+  contarCaracteres: id => {
+    print(id, 'contarCaracteres("banana") →', JSON.stringify(contarCaracteres("banana")));
+  },
+  invertirString: id => {
+    print(id, 'invertirString("hola") →', invertirString("hola"));
+  },
+  anagramas: id => {
+    print(id, 'sonAnagramas("roma", "amor") →', sonAnagramas("roma", "amor"));
+    print(id, 'sonAnagramas("hola", "chao") →', sonAnagramas("hola", "chao"));
+  },
+  fizzBuzz: id => {
+    print(id, fizzBuzz(20));
+  },
+  maximo: id => {
+    print(id, 'maximo([3,7,2,9,4]) →', maximo([3, 7, 2, 9, 4]));
+  },
+  eliminarDuplicados: id => {
+    print(id, 'eliminarDuplicados([1,2,2,3,3,3]) →', JSON.stringify(eliminarDuplicados([1, 2, 2, 3, 3, 3])));
+  },
+  bubbleSort: id => {
+    print(id, 'bubbleSort([5,3,8,1,2]) →', JSON.stringify(bubbleSort([5, 3, 8, 1, 2])));
+  },
+  twoSum: id => {
+    print(id, 'twoSum([2,7,11,15], 9) →', JSON.stringify(twoSum([2, 7, 11, 15], 9)));
+  },
+  flatten: id => {
+    print(id, 'flatten([1,[2,3,[4,5]],6]) →', JSON.stringify(flatten([1, [2, 3, [4, 5]], 6])));
+  },
+  groupBy: id => {
+    const personas = [{ nombre: "Ana", edad: 25 }, { nombre: "Luis", edad: 25 }, { nombre: "Eva", edad: 30 }];
+    print(id, JSON.stringify(groupBy(personas, "edad")));
+  },
+  fibonacci: id => {
+    print(id, 'fibonacciIterativo(10) →', fibonacciIterativo(10));
+    print(id, 'fibonacciRecursivo(10) →', fibonacciRecursivo(10));
+  },
+  primos: id => {
+    print(id, 'esPrimo(17) →', esPrimo(17));
+    print(id, 'primerosPrimos(5) →', JSON.stringify(primerosPrimos(5)));
+  },
+  factorial: id => {
+    print(id, 'factorial(5) →', factorial(5));
+  },
+  email: id => {
+    print(id, 'esEmailValido("correo@dominio.com") →', esEmailValido("correo@dominio.com"));
+    print(id, 'esEmailValido("correo-invalido") →', esEmailValido("correo-invalido"));
+  },
+  password: id => {
+    print(id, 'createPassword(6, true, true, true) →', createPassword(6, true, true, true));
+    print(id, 'createPassword(12, false, true, false) →', createPassword(12, false, true, false));
+    print(id, 'createPassword(10, true, false, true) →', createPassword(10, true, false, true));
+  },
+  debounceThrottle: id => {
+    print(id, 'debounce y throttle envuelven funciones, no tienen "salida" directa.');
+    print(id, 'Ejemplo: const buscarDebounced = debounce(buscar, 300);');
+    print(id, 'Ejemplo: const scrollThrottled = throttle(alScroll, 200);');
+  },
+  miMapFilterReduce: id => {
+    print(id, 'miMap([1,2,3], x => x*2) →', JSON.stringify(miMap([1, 2, 3], x => x * 2)));
+    print(id, 'miFilter([1,2,3,4], x => x%2===0) →', JSON.stringify(miFilter([1, 2, 3, 4], x => x % 2 === 0)));
+    print(id, 'miReduce([1,2,3,4], (a,x)=>a+x, 0) →', miReduce([1, 2, 3, 4], (a, x) => a + x, 0));
+  },
+  deepClone: id => {
+    const original = { a: 1, b: { c: 2, d: [3, 4] } };
+    const copia = deepClone(original);
+    copia.b.c = 999;
+    print(id, 'original.b.c →', original.b.c, '| copia.b.c →', copia.b.c);
+  },
+  delayPromise: async id => {
+    print(id, 'inicio...');
+    await delay(1000);
+    print(id, 'después de 1 segundo ✅');
+  },
+  miPromiseAll: async id => {
+    const p1 = delay(300).then(() => 'A');
+    const p2 = delay(100).then(() => 'B');
+    const p3 = delay(200).then(() => 'C');
+    const resultado = await miPromiseAll([p1, p2, p3]);
+    print(id, 'miPromiseAll([p1,p2,p3]) →', JSON.stringify(resultado));
+  },
+  pilaCola: id => {
+    const pila = new Pila();
+    pila.push(1); pila.push(2); pila.push(3);
+    print(id, 'Pila: push 1,2,3 → pop() →', pila.pop(), '| peek() →', pila.peek());
+
+    const cola = new Cola();
+    cola.enqueue('a'); cola.enqueue('b'); cola.enqueue('c');
+    print(id, 'Cola: enqueue a,b,c → dequeue() →', cola.dequeue(), '| frente() →', cola.frente());
+  },
+  busquedaBinaria: id => {
+    print(id, 'busquedaBinaria([1,3,5,7,9,11], 7) →', busquedaBinaria([1, 3, 5, 7, 9, 11], 7));
+  },
+  listaEnlazada: id => {
+    const lista = new ListaEnlazada();
+    lista.agregar(10); lista.agregar(20); lista.agregar(30);
+    print(id, 'recorrer() →', JSON.stringify(lista.recorrer()));
+  }
+};
+
+function run(nombre) {
+  clear(nombre);
+  demos[nombre](nombre);
+}
+</script>
+
+</body>
+</html>
